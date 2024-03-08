@@ -1,5 +1,5 @@
 package com.demo.entities;
-// Generated Mar 1, 2024, 2:08:08 PM by Hibernate Tools 4.3.6.Final
+// Generated Mar 7, 2024, 10:52:49 AM by Hibernate Tools 4.3.6.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -26,7 +26,8 @@ public class Account implements java.io.Serializable {
 	private String phone;
 	private Date dob;
 	private String status;
-	private Set<Bill> bills = new HashSet<Bill>(0);
+	private Set<Inputifo> inputifos = new HashSet<Inputifo>(0);
+	private Set<Outputinfor> outputinfors = new HashSet<Outputinfor>(0);
 	private Set<AccountProuduct> accountProuducts = new HashSet<AccountProuduct>(0);
 
 	public Account() {
@@ -48,8 +49,8 @@ public class Account implements java.io.Serializable {
 	}
 
 	public Account(Role role, String username, String password, String fullname, String email, boolean gender,
-			String address, String photo, String phone, Date dob, String status, Set<Bill> bills,
-			Set<AccountProuduct> accountProuducts) {
+			String address, String photo, String phone, Date dob, String status, Set<Inputifo> inputifos,
+			Set<Outputinfor> outputinfors, Set<AccountProuduct> accountProuducts) {
 		this.role = role;
 		this.username = username;
 		this.password = password;
@@ -61,7 +62,8 @@ public class Account implements java.io.Serializable {
 		this.phone = phone;
 		this.dob = dob;
 		this.status = status;
-		this.bills = bills;
+		this.inputifos = inputifos;
+		this.outputinfors = outputinfors;
 		this.accountProuducts = accountProuducts;
 	}
 
@@ -179,12 +181,21 @@ public class Account implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
-	public Set<Bill> getBills() {
-		return this.bills;
+	public Set<Inputifo> getInputifos() {
+		return this.inputifos;
 	}
 
-	public void setBills(Set<Bill> bills) {
-		this.bills = bills;
+	public void setInputifos(Set<Inputifo> inputifos) {
+		this.inputifos = inputifos;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
+	public Set<Outputinfor> getOutputinfors() {
+		return this.outputinfors;
+	}
+
+	public void setOutputinfors(Set<Outputinfor> outputinfors) {
+		this.outputinfors = outputinfors;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")

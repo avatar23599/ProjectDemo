@@ -1,5 +1,5 @@
 package com.demo.entities;
-// Generated Mar 1, 2024, 2:08:08 PM by Hibernate Tools 4.3.6.Final
+// Generated Mar 7, 2024, 10:52:49 AM by Hibernate Tools 4.3.6.Final
 
 import jakarta.persistence.*;
 

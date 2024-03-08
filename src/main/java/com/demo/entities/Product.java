@@ -1,5 +1,5 @@
 package com.demo.entities;
-// Generated Mar 1, 2024, 2:08:08 PM by Hibernate Tools 4.3.6.Final
+// Generated Mar 7, 2024, 10:52:49 AM by Hibernate Tools 4.3.6.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,9 +21,11 @@ public class Product implements java.io.Serializable {
 	private String description;
 	private String status;
 	private String picture;
+	private Set<Outputinfor> outputinfors = new HashSet<Outputinfor>(0);
 	private Set<AccountProuduct> accountProuducts = new HashSet<AccountProuduct>(0);
 	private Set<InfoPicture> infoPictures = new HashSet<InfoPicture>(0);
-	private Set<InfoBill> infoBills = new HashSet<InfoBill>(0);
+	private Set<Picture> pictures = new HashSet<Picture>(0);
+	private Set<Inputifo> inputifos = new HashSet<Inputifo>(0);
 
 	public Product() {
 	}
@@ -40,8 +42,8 @@ public class Product implements java.io.Serializable {
 	}
 
 	public Product(Category category, String name, double price, int quantity, String description, String status,
-			String picture, Set<AccountProuduct> accountProuducts, Set<InfoPicture> infoPictures,
-			Set<InfoBill> infoBills) {
+			String picture, Set<Outputinfor> outputinfors, Set<AccountProuduct> accountProuducts,
+			Set<InfoPicture> infoPictures, Set<Picture> pictures, Set<Inputifo> inputifos) {
 		this.category = category;
 		this.name = name;
 		this.price = price;
@@ -49,14 +51,15 @@ public class Product implements java.io.Serializable {
 		this.description = description;
 		this.status = status;
 		this.picture = picture;
+		this.outputinfors = outputinfors;
 		this.accountProuducts = accountProuducts;
 		this.infoPictures = infoPictures;
-		this.infoBills = infoBills;
+		this.pictures = pictures;
+		this.inputifos = inputifos;
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	@Column(name = "id", unique = true, nullable = false)
 	public Integer getId() {
 		return this.id;
@@ -131,6 +134,15 @@ public class Product implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+	public Set<Outputinfor> getOutputinfors() {
+		return this.outputinfors;
+	}
+
+	public void setOutputinfors(Set<Outputinfor> outputinfors) {
+		this.outputinfors = outputinfors;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
 	public Set<AccountProuduct> getAccountProuducts() {
 		return this.accountProuducts;
 	}
@@ -149,12 +161,21 @@ public class Product implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
-	public Set<InfoBill> getInfoBills() {
-		return this.infoBills;
+	public Set<Picture> getPictures() {
+		return this.pictures;
 	}
 
-	public void setInfoBills(Set<InfoBill> infoBills) {
-		this.infoBills = infoBills;
+	public void setPictures(Set<Picture> pictures) {
+		this.pictures = pictures;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+	public Set<Inputifo> getInputifos() {
+		return this.inputifos;
+	}
+
+	public void setInputifos(Set<Inputifo> inputifos) {
+		this.inputifos = inputifos;
 	}
 
 }
